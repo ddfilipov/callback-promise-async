@@ -5,6 +5,10 @@ function getCats(cb) {
     }, random);
 }
 
+getCats(function (cats) {
+    console.log(cats);
+});
+
 function getDogs(cb) {
     const random = Math.random() * 1000;
     setTimeout(function () {
