@@ -13,6 +13,7 @@ getCats(function (cats) {
         });
     });
 });
+
 function getDogs(cb) {
     const random = Math.random() * 1000;
     setTimeout(function () {
