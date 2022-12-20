@@ -6,9 +6,13 @@ function getCats(cb) {
 }
 
 getCats(function (cats) {
-    console.log(cats);
+    getDogs(function (dogs) {
+        getBirds(function (birds) {
+            const allAnimals = cats.concat(dogs, birds);
+            console.log(allAnimals);
+        });
+    });
 });
-
 function getDogs(cb) {
     const random = Math.random() * 1000;
     setTimeout(function () {
