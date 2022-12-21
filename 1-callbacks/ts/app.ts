@@ -6,8 +6,8 @@ function getCatsTs(cb: (a: string[]) => void) {
 }
 
 getCatsTs(function (cats: string[]) {
-    getDogs(function (dogs: string[]) {
-        getBirds(function (birds: string[]) {
+    getDogsTs(function (dogs: string[]) {
+        getBirdsTs(function (birds: string[]) {
             const allAnimals = cats.concat(dogs, birds);
             console.log(allAnimals);
         });
