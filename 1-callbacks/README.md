@@ -21,3 +21,18 @@ getCats(function (cats) {
 We call `getCats()` and pass the anonymous function `function (cats){}` and then we console.log() the result of cats, which will return an array of strings.
 
 Notice how there's a `setTimeout()` inside the first function. This is because we want to emulate an api's behavior and make it async.
+
+Here's the TypeScript equivalent of the previous code:
+
+```ts
+function getCats(cb: (cats: string[]) => void) {
+    const random = Math.random() * 1000;
+    setTimeout(function () {
+        cb(["Meowsalot", "Purrsloud", "BiscuitMaker"]);
+    }, random);
+}
+
+getCats(function (cats: string[]) {
+    console.log(cats);
+});
+```
