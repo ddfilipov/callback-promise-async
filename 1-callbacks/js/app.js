@@ -9,9 +9,10 @@ getCats(function (cats) {
     getDogs(function (dogs) {
         getBirds(function (birds) {
             const allAnimals = cats.concat(dogs, birds);
-            const allAnimals2 = [...cats, ...dogs, ...birds];
+            superSecretOrder(allAnimals, function (sortedNames) {
+                console.log(sortedNames);
+            });
             console.log(allAnimals);
-            console.log(allAnimals2);
         });
     });
 });
