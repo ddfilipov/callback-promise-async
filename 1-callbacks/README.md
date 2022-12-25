@@ -166,4 +166,6 @@ function superSecretOrderTs(animals: string[], cb: (orderedAnimals: string[]) =>
 }
 ```
 
-There's a lot of indentation with this callback method.
+There's a lot of indentation with this callback method. This type of code is so messy so if we can avoid it, it's better to.
+
+Instead of executing all these 3 getCats, getDogs.. functions one by one, we want to execute them at the same time, because it doesn't matter in which order it's gonna happen as long as superSecretOrder recieves an array of string. So we'd just need to make sure that all 3 have been finished.
