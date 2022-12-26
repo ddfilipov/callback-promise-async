@@ -1,17 +1,5 @@
-// METHOD 1: Execute functions 1 by 1
-// getCatsTs(function (cats: string[]) {
-//     getDogsTs(function (dogs: string[]) {
-//         getBirdsTs(function (birds: string[]) {
-//             const allAnimals = cats.concat(dogs, birds);
-//             console.log(allAnimals);
-//             superSecretOrderTs(allAnimals, function (orderedAnimals: string[]) {
-//                 console.log(orderedAnimals);
-//             });
-//         });
-//     });
-// });
+export {};
 
-// METHOD 2: Execute all functions at the same time
 let allAnimalsTs: string[][] = [];
 
 function isArrayFilledTs() {

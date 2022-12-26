@@ -1,3 +1,4 @@
+export {};
 // METHOD 1: Execute functions 1 by 1
 // getCatsTs(function (cats: string[]) {
 //     getDogsTs(function (dogs: string[]) {
