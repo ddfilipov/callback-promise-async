@@ -1,11 +1,11 @@
 export {};
 // METHOD 1: Execute functions 1 by 1
-// getCatsTs(function (cats: string[]) {
-//     getDogsTs(function (dogs: string[]) {
-//         getBirdsTs(function (birds: string[]) {
+// getCats(function (cats: string[]) {
+//     getDogs(function (dogs: string[]) {
+//         getBirds(function (birds: string[]) {
 //             const allAnimals = cats.concat(dogs, birds);
 //             console.log(allAnimals);
-//             superSecretOrderTs(allAnimals, function (orderedAnimals: string[]) {
+//             superSecretOrder(allAnimals, function (orderedAnimals: string[]) {
 //                 console.log(orderedAnimals);
 //             });
 //         });
@@ -13,52 +13,52 @@ export {};
 // });
 
 // METHOD 2: Execute all functions at the same time
-let allAnimalsTs: string[][] = [];
+let allAnimals: string[][] = [];
 
 function isArrayFilledTs() {
-    if (allAnimalsTs.length === 3) {
-        const arrayAnimals: string[] = allAnimalsTs[0].concat(allAnimalsTs[1], allAnimalsTs[2]);
-        superSecretOrderTs(arrayAnimals, function (orderedAnimals: string[]) {
+    if (allAnimals.length === 3) {
+        const arrayAnimals: string[] = allAnimals[0].concat(allAnimals[1], allAnimals[2]);
+        superSecretOrder(arrayAnimals, function (orderedAnimals: string[]) {
             console.log(orderedAnimals);
         });
     }
 }
 
-getCatsTs(function (cats: string[]) {
-    allAnimalsTs.push(cats);
+getCats(function (cats: string[]) {
+    allAnimals.push(cats);
     isArrayFilledTs();
 });
-getDogsTs(function (dogs: string[]) {
-    allAnimalsTs.push(dogs);
+getDogs(function (dogs: string[]) {
+    allAnimals.push(dogs);
     isArrayFilledTs();
 });
-getBirdsTs(function (birds: string[]) {
-    allAnimalsTs.push(birds);
+getBirds(function (birds: string[]) {
+    allAnimals.push(birds);
     isArrayFilledTs();
 });
 
-function getCatsTs(cb: (a: string[]) => void) {
+function getCats(cb: (a: string[]) => void) {
     const random = Math.random() * 1000;
     setTimeout(function () {
         cb(["Meowsalot", "Purrsloud", "BiscuitMaker"]);
     }, random);
 }
 
-function getDogsTs(cb: (dogs: string[]) => void) {
+function getDogs(cb: (dogs: string[]) => void) {
     const random = Math.random() * 1000;
     setTimeout(function () {
         cb(["EatsAnything", "Barksalot", "HeadTilt"]);
     }, random);
 }
 
-function getBirdsTs(cb: (birds: string[]) => void) {
+function getBirds(cb: (birds: string[]) => void) {
     const random = Math.random() * 1000;
     setTimeout(function () {
         cb(["Scruffy", "Baldy", "Screech"]);
     }, random);
 }
 
-function superSecretOrderTs(animals: string[], cb: (orderedAnimals: string[]) => void) {
+function superSecretOrder(animals: string[], cb: (orderedAnimals: string[]) => void) {
     const random = Math.random() * 1000;
     setTimeout(function () {
         cb(animals.sort());
