@@ -37,6 +37,8 @@ getCats(function (cats: string[]) {
 });
 ```
 
+### synchronous async calls (execute one by one and wait)
+
 Now, what if we wanted to make several api calls, wait for them to finish and then call another function that's gonna do something with their result?
 
 We have the following code:
@@ -168,4 +170,49 @@ function superSecretOrderTs(animals: string[], cb: (orderedAnimals: string[]) =>
 
 There's a lot of indentation with this callback method. This type of code is so messy so if we can avoid it, it's better to.
 
+### async calls (all functions at the same time)
+
 Instead of executing all these 3 getCats, getDogs.. functions one by one, we want to execute them at the same time, because it doesn't matter in which order it's gonna happen as long as superSecretOrder recieves an array of string. So we'd just need to make sure that all 3 have been finished.
+
+If we wanted to achieve this we'd start with:
+
+```js
+var allAnimals = [];
+
+function isArrayFilled() {
+    if (allAnimals.length === 3) {
+        const arrayAnimals = allAnimals[0].concat(allAnimals[1], allAnimals[2]);
+        superSecretOrder(arrayAnimals, function (orderedAnimals) {
+            console.log(orderedAnimals);
+        });
+    }
+}
+```
+
+Here we declare a `allAnimals` variable that's gonna hold all the animals and another `isArrayfilled()` function that will check if `allAnimals` is has a length of 3 (aka, all 3 functions have finished executing) and then it would finally call the `superSecretOrder()` and `console.log()` the result.
+
+We'd also have to change the way we're calling the get... functions:
+
+```js
+getCats(function (cats) {
+    allAnimals.push(cats);
+    isArrayFilled();
+});
+getDogs(function (dogs) {
+    allAnimals.push(dogs);
+    isArrayFilled();
+});
+getBirds(function (birds) {
+    allAnimals.push(birds);
+    isArrayFilled();
+});
+```
+
+This way we would always call `isArrayFilled` and whichever of the 3 finishes last, would call `superSecretOrder()` from the previous snippet.
+
+(For the TypeScript equivalent, check the `app.ts` file).
+
+### Conclusion
+
+This code is not very clean, and using this method is not the best practice currently.
+The next lesson will cover Promises.
