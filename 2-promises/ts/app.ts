@@ -14,8 +14,8 @@ getCats()
     });
 
 // Functions which return promises that you can use
-function getCats() {
-    return new Promise(function (resolve, reject) {
+function getCats(): Promise<string[]> {
+    return new Promise<string[]>(function (resolve, reject) {
         const random = Math.random() * 1000;
         setTimeout(function () {
             resolve(["Meowsalot", "Purrsloud", "BiscuitMaker"]);
@@ -23,8 +23,8 @@ function getCats() {
     });
 }
 
-function getDogs() {
-    return new Promise(function (resolve, reject) {
+function getDogs(): Promise<string[]> {
+    return new Promise<string[]>(function (resolve, reject) {
         const random = Math.random() * 1000;
         setTimeout(function () {
             resolve(["EatsAnything", "Barksalot", "HeadTilt"]);
@@ -32,8 +32,8 @@ function getDogs() {
     });
 }
 
-function getBirds() {
-    return new Promise(function (resolve, reject) {
+function getBirds(): Promise<string[]> {
+    return new Promise<string[]>(function (resolve, reject) {
         const random = Math.random() * 1000;
         setTimeout(function () {
             resolve(["Scruffy", "Baldy", "Screech"]);
@@ -42,7 +42,7 @@ function getBirds() {
 }
 
 function superSecretOrder(items) {
-    return new Promise(function (resolve, reject) {
+    return new Promise<string[]>(function (resolve, reject) {
         const random = Math.random() * 1000;
         setTimeout(function () {
             resolve([...items].sort());
