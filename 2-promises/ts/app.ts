@@ -1,66 +1,51 @@
 export {};
-// METHOD 1: Execute functions 1 by 1
-// getCats(function (cats: string[]) {
-//     getDogs(function (dogs: string[]) {
-//         getBirds(function (birds: string[]) {
-//             const allAnimals = cats.concat(dogs, birds);
-//             console.log(allAnimals);
-//             superSecretOrder(allAnimals, function (orderedAnimals: string[]) {
-//                 console.log(orderedAnimals);
-//             });
-//         });
-//     });
-// });
 
-// METHOD 2: Execute all functions at the same time
-let allAnimals: string[][] = [];
+getCats()
+    .then(function (cats) {
+        console.log(cats);
+        return getDogs();
+    })
+    .then(function (dogs) {
+        console.log(dogs);
+        return getBirds();
+    })
+    .then(function (birds) {
+        console.log(birds);
+    });
 
-function isArrayFilledTs() {
-    if (allAnimals.length === 3) {
-        const arrayAnimals: string[] = allAnimals[0].concat(allAnimals[1], allAnimals[2]);
-        superSecretOrder(arrayAnimals, function (orderedAnimals: string[]) {
-            console.log(orderedAnimals);
-        });
-    }
+// Functions which return promises that you can use
+function getCats() {
+    return new Promise(function (resolve, reject) {
+        const random = Math.random() * 1000;
+        setTimeout(function () {
+            resolve(["Meowsalot", "Purrsloud", "BiscuitMaker"]);
+        }, random);
+    });
 }
 
-getCats(function (cats: string[]) {
-    allAnimals.push(cats);
-    isArrayFilledTs();
-});
-getDogs(function (dogs: string[]) {
-    allAnimals.push(dogs);
-    isArrayFilledTs();
-});
-getBirds(function (birds: string[]) {
-    allAnimals.push(birds);
-    isArrayFilledTs();
-});
-
-function getCats(cb: (a: string[]) => void) {
-    const random = Math.random() * 1000;
-    setTimeout(function () {
-        cb(["Meowsalot", "Purrsloud", "BiscuitMaker"]);
-    }, random);
+function getDogs() {
+    return new Promise(function (resolve, reject) {
+        const random = Math.random() * 1000;
+        setTimeout(function () {
+            resolve(["EatsAnything", "Barksalot", "HeadTilt"]);
+        }, random);
+    });
 }
 
-function getDogs(cb: (dogs: string[]) => void) {
-    const random = Math.random() * 1000;
-    setTimeout(function () {
-        cb(["EatsAnything", "Barksalot", "HeadTilt"]);
-    }, random);
+function getBirds() {
+    return new Promise(function (resolve, reject) {
+        const random = Math.random() * 1000;
+        setTimeout(function () {
+            resolve(["Scruffy", "Baldy", "Screech"]);
+        }, random);
+    });
 }
 
-function getBirds(cb: (birds: string[]) => void) {
-    const random = Math.random() * 1000;
-    setTimeout(function () {
-        cb(["Scruffy", "Baldy", "Screech"]);
-    }, random);
-}
-
-function superSecretOrder(animals: string[], cb: (orderedAnimals: string[]) => void) {
-    const random = Math.random() * 1000;
-    setTimeout(function () {
-        cb(animals.sort());
-    }, random);
+function superSecretOrder(items) {
+    return new Promise(function (resolve, reject) {
+        const random = Math.random() * 1000;
+        setTimeout(function () {
+            resolve([...items].sort());
+        }, random);
+    });
 }
