@@ -80,3 +80,27 @@ Promise.all([getCats(), getDogs(), getBirds()]).then(([cats, dogs, birds]) => {
 ```
 
 I've destructured the `cats`, `dogs` and `birds` so it's a lil bit easier to understand what we're concatenating. At the end of our `Promise.all()` we call `superSecretOrder()` and that would order the animals and we then show them with a `console.log`.
+
+We could also return something in our Promise.all() and use a .then() at the end like this:
+
+```js
+Promise.all([getCats(), getDogs(), getBirds()])
+    .then(([cats, dogs, birds]) => {
+        const allAnimals = cats.concat(dogs, birds);
+        console.log(cats, dogs, birds);
+        console.log("showing allAnimals:", allAnimals);
+
+        return superSecretOrder(allAnimals);
+    })
+    .then((orderedAnimals) => {
+        console.log("showing ordered animals:", orderedAnimals);
+    });
+```
+
+This would do the same thing as the one I did earlier but it's just a differnt way of doing things.
+
+### Conclusion
+
+This code is still not gonna be perfect, we still have to use anonymous functions, passing in parameters and even though we're not nesting code like we did with callbacks. We still have to use .then() fairly often.
+
+So, promises are better than using callbacks but there's an even better way of working with asynchronous calls, and that's called async/await.

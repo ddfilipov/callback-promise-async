@@ -23,7 +23,6 @@ Promise.all([getCats(), getDogs(), getBirds()]).then(([cats, dogs, birds]) => {
     });
 });
 
-
 // Functions which return promises that you can use
 function getCats() {
     return new Promise(function (resolve, reject) {
