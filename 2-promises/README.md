@@ -53,7 +53,7 @@ Promise.all([getCats(), getDogs(), getBirds()]).then(([cats, dogs, birds]) => {
 });
 ```
 
-Notice how I've used an arrow function on the .then(), you can also use a regular function like LearnWebCode does:
+Notice how I've used an arrow function on the .`then()`, you can also use a regular function like LearnWebCode does:
 
 ```js
 Promise.all([getCats(), getDogs(), getBirds()]).then(function (results) {
@@ -65,3 +65,18 @@ Promise.all([getCats(), getDogs(), getBirds()]).then(function (results) {
 
 Both methods are correct.
 
+The full code would be like this:
+
+```js
+Promise.all([getCats(), getDogs(), getBirds()]).then(([cats, dogs, birds]) => {
+    const allAnimals = cats.concat(dogs, birds);
+    console.log(cats, dogs, birds);
+    console.log("showing allAnimals:", allAnimals);
+
+    superSecretOrder(allAnimals).then((orderedAnimals) => {
+        console.log("showing ordered animals:", orderedAnimals);
+    });
+});
+```
+
+I've destructured the `cats`, `dogs` and `birds` so it's a lil bit easier to understand what we're concatenating. At the end of our `Promise.all()` we call `superSecretOrder()` and that would order the animals and we then show them with a `console.log`.

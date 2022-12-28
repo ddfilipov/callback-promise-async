@@ -13,16 +13,16 @@
 //     });
 
 // METHOD 2: call all functions at the same time, we don't care which one finishes first
-
 Promise.all([getCats(), getDogs(), getBirds()]).then(([cats, dogs, birds]) => {
     const allAnimals = cats.concat(dogs, birds);
     console.log(cats, dogs, birds);
-    console.log(allAnimals);
+    console.log("showing allAnimals:", allAnimals);
+
+    superSecretOrder(allAnimals).then((orderedAnimals) => {
+        console.log("showing ordered animals:", orderedAnimals);
+    });
 });
-// Promise.all([getCats(), getDogs(), getBirds()]).then(function (results) {
-//     const allAnimals = results[0].concat(results[1], results[2]);
-//     console.log(allAnimals);
-// });
+
 
 // Functions which return promises that you can use
 function getCats() {
