@@ -41,4 +41,27 @@ This is a little better than callbacks
 
 The previous example is not a real scenario, in reality we don't care which one of the 3 `get` functions gets executed first.
 
-This is one of the biggest reasons we need promises. `Promise.all()` recieves an array of promises
+This is one of the biggest reasons we need promises. `Promise.all()` recieves an array of promises and returns a promise.
+
+For this example we'd do:
+
+```js
+Promise.all([getCats(), getDogs(), getBirds()]).then(([cats, dogs, birds]) => {
+    const allAnimals = cats.concat(dogs, birds);
+    console.log(cats, dogs, birds);
+    console.log(allAnimals);
+});
+```
+
+Notice how I've used an arrow function on the .then(), you can also use a regular function like LearnWebCode does:
+
+```js
+Promise.all([getCats(), getDogs(), getBirds()]).then(function (results) {
+    const allAnimals = cats.concat(dogs, birds);
+    console.log(cats, dogs, birds);
+    console.log(allAnimals);
+});
+```
+
+Both methods are correct.
+

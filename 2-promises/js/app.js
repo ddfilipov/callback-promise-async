@@ -19,6 +19,10 @@ Promise.all([getCats(), getDogs(), getBirds()]).then(([cats, dogs, birds]) => {
     console.log(cats, dogs, birds);
     console.log(allAnimals);
 });
+// Promise.all([getCats(), getDogs(), getBirds()]).then(function (results) {
+//     const allAnimals = results[0].concat(results[1], results[2]);
+//     console.log(allAnimals);
+// });
 
 // Functions which return promises that you can use
 function getCats() {
