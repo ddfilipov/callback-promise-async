@@ -1,5 +1,6 @@
 export {};
 
+// METHOD 1: call functions one after the other
 getCats()
     .then(function (cats) {
         console.log(cats);
@@ -12,6 +13,17 @@ getCats()
     .then(function (birds) {
         console.log(birds);
     });
+
+// METHOD 2: call all functions at the same time, we don't care which one finishes first
+Promise.all([getCats(), getDogs(), getBirds()]).then(([cats, dogs, birds]) => {
+    const allAnimals: string[] = cats.concat(dogs, birds);
+    console.log(cats, dogs, birds);
+    console.log("showing allAnimals:", allAnimals);
+
+    superSecretOrder(allAnimals).then((orderedAnimals: string[]) => {
+        console.log("showing ordered animals:", orderedAnimals);
+    });
+});
 
 // Functions which return promises that you can use
 function getCats(): Promise<string[]> {
