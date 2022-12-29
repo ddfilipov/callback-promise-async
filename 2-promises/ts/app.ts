@@ -53,7 +53,7 @@ function getBirds(): Promise<string[]> {
     });
 }
 
-function superSecretOrder(items) {
+function superSecretOrder(items: string[]) {
     return new Promise<string[]>(function (resolve, reject) {
         const random = Math.random() * 1000;
         setTimeout(function () {
