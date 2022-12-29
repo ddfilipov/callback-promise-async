@@ -37,4 +37,24 @@ const go = async () => {
 
 go();
 ```
+
 This code is much cleaner than the `.then()` one.
+
+In the end we should have this code:
+
+```js
+const go = async () => {
+    const [cats, dogs, birds] = await Promise.all([getCats(), getDogs(), getBirds()]);
+    const animals = [...cats, ...dogs, ...birds];
+    const orderedAnimals = await superSecretOrder(animals);
+    console.log(orderedAnimals);
+};
+
+go();
+```
+
+Remember that every time the js engide finds an `await` inside an `async`, it will wait to jump to the other line of code. In our code, this is what it would happen:
+
+1. `const [cats, dogs, birds] = await Promise.all([getCats(), getDogs(), getBirds()]);` gets executed and it waits for the Promise to fullfil (awaits for the functions to execute), cuz there's an `await`.
+2. then we'd concat all the animals into an array: `const animals = [...cats, ...dogs, ...birds];`
+3. After that we call `superSecretOrder()` with an await so it waits before console.logging the response: `const orderedAnimals = await superSecretOrder(animals);`
