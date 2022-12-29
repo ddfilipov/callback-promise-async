@@ -1,6 +1,8 @@
 const go = async () => {
-    const cats = await getCats();
-    console.log(cats);
+    const [cats, dogs, birds] = await Promise.all([getCats(), getDogs(), getBirds()]);
+    const animals = [...cats, ...dogs, ...birds];
+
+    console.log(animals);
 };
 
 go();
