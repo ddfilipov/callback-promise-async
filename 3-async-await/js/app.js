@@ -1,4 +1,9 @@
+const go = async () => {
+    const cats = await getCats();
+    console.log(cats);
+};
 
+go();
 
 // Functions which return promises that you can use
 function getCats() {
