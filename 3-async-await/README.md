@@ -1,13 +1,14 @@
 ## Async/Await
 
-We again have getCats, getDogs, and getBirds that return promises to retrieve data.
+For the async/await part we're gonna use the same functions as before, we'll just have to change the way we call them.
 
-The functions which we are calling are at the bottom of the app.js and app.ts file.
+Async/await still uses Promises, but uses different syntax.
 
-`getCats().then();` this line right here would call `getCats()`, and we don't know how long this is gonna take, but when know that after it's been called hence the `.then()`, we're gonna call a function we're gonna give it.
-
-This would be the result:
+This method is better because it's easier for the human brain to quickly understand what's happening. This exemplifies what we want to achieve:
 
 ```js
-
+const something = "hello";
+console.log(something);
 ```
+
+When we see this code we immidiately know what's gonna happen. The first line of code is gonna execute, followed by the second one. That's what we wanna achieve with async await.
