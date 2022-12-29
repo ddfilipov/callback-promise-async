@@ -6,4 +6,4 @@ The tutorial's goal is to show the difference, especially in code-clarity, betwe
 
 Contents:
 
-## [Callbacks]|(1-callbacks/README.md)
+## [Callbacks](1-callbacks/README.md)
