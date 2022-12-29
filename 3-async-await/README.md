@@ -58,3 +58,6 @@ Remember that every time the js engide finds an `await` inside an `async`, it wi
 1. `const [cats, dogs, birds] = await Promise.all([getCats(), getDogs(), getBirds()]);` gets executed and it waits for the Promise to fullfil (awaits for the functions to execute), cuz there's an `await`.
 2. then we'd concat all the animals into an array: `const animals = [...cats, ...dogs, ...birds];`
 3. After that we call `superSecretOrder()` with an await so it waits before console.logging the response: `const orderedAnimals = await superSecretOrder(animals);`
+
+### Conclusion
+This time, the code is very readable compared to the `callback` an the `.then()` way.
