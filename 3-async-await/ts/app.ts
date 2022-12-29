@@ -1,8 +1,10 @@
 export {};
 
 const go = async () => {
-    const cats = await getCats();
-    console.log(cats);
+    const [cats, dogs, birds] = await Promise.all([getCats(), getDogs(), getBirds()]);
+    const allAnimals = [...cats, ...dogs, ...birds];
+    const orderedAnimals = await superSecretOrder(allAnimals);
+    console.log(orderedAnimals);
 };
 
 go();
